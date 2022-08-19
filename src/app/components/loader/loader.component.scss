@@ -1,0 +1,131 @@
+.container {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  background-color: gray;
+  //opacity: 0.5;
+
+  .loader,
+  .loader:before,
+  .loader:after {
+    background: #ffffff;
+    -webkit-animation: load1 1s infinite ease-in-out;
+    animation: load1 1s infinite ease-in-out;
+    width: 1em;
+    height: 4em;
+  }
+
+  .loader {
+    color: #ffffff;
+    text-indent: -9999em;
+    margin: 88px auto;
+    position: relative;
+    font-size: 11px;
+    -webkit-transform: translateZ(0);
+    -ms-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-animation-delay: -0.16s;
+    animation-delay: -0.16s;
+  }
+
+  .loader:before,
+  .loader:after {
+    position: absolute;
+    top: 0;
+    content: '';
+  }
+
+  .loader:before {
+    left: -1.5em;
+    -webkit-animation-delay: -0.32s;
+    animation-delay: -0.32s;
+  }
+
+  .loader:after {
+    left: 1.5em;
+  }
+
+  @-webkit-keyframes load1 {
+    0%,
+    80%,
+    100% {
+      box-shadow: 0 0;
+      height: 4em;
+    }
+    40% {
+      box-shadow: 0 -2em;
+      height: 5em;
+    }
+  }
+  @keyframes load1 {
+    0%,
+    80%,
+    100% {
+      box-shadow: 0 0;
+      height: 4em;
+    }
+    40% {
+      box-shadow: 0 -2em;
+      height: 5em;
+    }
+  }
+
+}
+
+
+//.container {
+//  position: fixed;
+//  top: 0;
+//  left: 0;
+//  right: 0;
+//  bottom: 0;
+//  text-align: center;
+//  background: #eee;
+//
+//  &:before {
+//    content: "";
+//    height: 100%;
+//    display: inline-block;
+//    vertical-align: middle;
+//  }
+//
+//  .spinner-frame {
+//    display: inline-block;
+//    vertical-align: middle;
+//    width: 100px;
+//    height: 100px;
+//    border-radius: 50%;
+//    position: relative;
+//    overflow: hidden;
+//    border: 5px solid #fff;
+//    padding: 10px;
+//
+//    .spinner-bar {
+//      background: #29d;
+//      width: 50%;
+//      height: 50%;
+//      position: absolute;
+//      top: 0;
+//      left: 0;
+//      border-radius: 100% 0 0 0;
+//
+//      -webkit-animation: spinny 2s linear infinite;
+//      transform-origin: 100% 100%;
+//    }
+//
+//    .spinner-cover {
+//      background: #fff;
+//      width: 100%;
+//      height: 100%;
+//      border-radius: 50%;
+//      position: relative;
+//      z-index: 2;
+//    }
+//  }
+//}
+
