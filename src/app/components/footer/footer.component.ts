@@ -19,12 +19,11 @@ export class FooterComponent implements OnInit {
   isBackgroundColored(): boolean {
     const storageKey = 'refreshCounter';
     let counter = +localStorage[storageKey] || 0;
-    if (+counter === 5) {
+    if (+counter === 4) {
       localStorage.setItem(storageKey, '0');
       return true;
     }
-    counter++;
-    localStorage.setItem(storageKey, counter.toString());
+    localStorage.setItem(storageKey, (++counter).toString());
     return false;
   }
 
