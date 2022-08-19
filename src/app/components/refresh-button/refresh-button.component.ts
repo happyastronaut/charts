@@ -10,7 +10,8 @@ export class RefreshButtonComponent implements OnInit {
 
   constructor(
     protected apiService: ApiService,
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
   }

@@ -12,8 +12,6 @@ import {LoaderService} from "../../services/loader.service";
 })
 export class ChartComponent implements OnInit {
 
-  // userData$: Observable<UserModel[]>;
-
   @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
   userData: UserModel[];
   errorFlag = false;
@@ -22,7 +20,6 @@ export class ChartComponent implements OnInit {
     private apiService: ApiService,
     private loaderService: LoaderService,
   ) {
-    // this.userData$ = this.apiService.response;
   }
 
   public barChartLegend = true;
@@ -44,48 +41,30 @@ export class ChartComponent implements OnInit {
 
   ngOnInit(): void {
     this.updateChart();
-
-    // this.apiService.getData().subscribe(
-    //   res => {
-    //     this.userData = res.sort((item, item2) => {
-    //       return item.dob.age - item2.dob.age;
-    //     });
-    //     this.userData.forEach(item => {
-    //       if (item.dob.age >= 20 && item.dob.age < 29) this.barChartData.datasets[0].data[0]++
-    //       if (item.dob.age >= 30 && item.dob.age < 39) this.barChartData.datasets[0].data[1]++
-    //       if (item.dob.age >= 40 && item.dob.age < 49) this.barChartData.datasets[0].data[2]++
-    //       if (item.dob.age >= 50 && item.dob.age < 59) this.barChartData.datasets[0].data[3]++
-    //       if (item.dob.age >= 60 && item.dob.age < 69) this.barChartData.datasets[0].data[4]++
-    //       if (item.dob.age >= 70 && item.dob.age < 79) this.barChartData.datasets[0].data[5]++
-    //     })
-    //     console.log(this.barChartData.datasets[0]);
-    //     this.chart?.update();
-    //     this.loaderService.hideLoader();
-    //   },
-    //   error => {
-    //     this.errorFlag = true;
-    //   }
-    // );
-
-
   }
 
   private updateChart(): void {
     this.loaderService.showLoader();
-    this.apiService.response.subscribe(
-      res => {
-        this.userData = res;
-        this.userData.forEach(item => {
-          if (item.dob.age >= 20 && item.dob.age < 29) this.barChartData.datasets[0].data[0]++
-          if (item.dob.age >= 30 && item.dob.age < 39) this.barChartData.datasets[0].data[1]++
-          if (item.dob.age >= 40 && item.dob.age < 49) this.barChartData.datasets[0].data[2]++
-          if (item.dob.age >= 50 && item.dob.age < 59) this.barChartData.datasets[0].data[3]++
-          if (item.dob.age >= 60 && item.dob.age < 69) this.barChartData.datasets[0].data[4]++
-          if (item.dob.age >= 70 && item.dob.age < 79) this.barChartData.datasets[0].data[5]++
-        })
-        this.chart?.update();
-        this.loaderService.hideLoader();
-      },
+    this.apiService.response.subscribe({
+        next: res => {
+          this.userData = res;
+          this.userData.forEach(item => {
+            if (item.dob.age >= 20 && item.dob.age < 29) this.barChartData.datasets[0].data[0]++
+            if (item.dob.age >= 30 && item.dob.age < 39) this.barChartData.datasets[0].data[1]++
+            if (item.dob.age >= 40 && item.dob.age < 49) this.barChartData.datasets[0].data[2]++
+            if (item.dob.age >= 50 && item.dob.age < 59) this.barChartData.datasets[0].data[3]++
+            if (item.dob.age >= 60 && item.dob.age < 69) this.barChartData.datasets[0].data[4]++
+            if (item.dob.age >= 70 && item.dob.age < 79) this.barChartData.datasets[0].data[5]++
+          })
+          this.chart?.update();
+          this.loaderService.hideLoader();
+        },
+        error: err => {
+          this.errorFlag = true;
+          //do something
+          console.error(err);
+        },
+      }
     )
   }
 

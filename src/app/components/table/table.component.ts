@@ -17,12 +17,6 @@ export class TableComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // this.api.getData().subscribe(res => {
-    //   this.userData = res.sort((item, item2) => {
-    //     return item2.dob.age - item.dob.age;
-    //   }).slice(0, 10);
-    //   console.log('Table', this.userData);
-    // });
     this.api.response.subscribe(res => {
       this.userData = res.sort((item, item2) => {
         return item2.dob.age - item.dob.age;

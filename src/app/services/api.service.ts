@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {map,Subject, take} from "rxjs";
+import {map, Subject, take} from "rxjs";
 import {UserModel} from "../models/user.model";
 import {LoaderService} from "./loader.service";
 
@@ -18,19 +18,6 @@ export class ApiService {
   ) {
     this.getData();
   }
-
-  // getData(): Observable<UserModel[]> {
-  //   const baseUrl = 'https://randomuser.me/api/';
-  //   const results = 'results=1000';
-  //   const nat = 'nat=fr';
-  //   const gender = 'gender=male'
-  //   const exc = 'exc=location,email,login,registered,phone,cell,picture,id';
-  //
-  //   return this.http.get<UserModel[]>(`${baseUrl}?${results}&${nat}&${gender}&${exc}`).pipe(
-  //     map((data: any) => data.results),
-  //   );
-  //
-  // }
 
   getData(): void {
     this.loader.showLoader();
