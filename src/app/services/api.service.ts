@@ -32,8 +32,13 @@ export class ApiService {
         take(1),
         map(resp => resp.results),
       )
-      .subscribe(resp => {
-        this.responseSource.next(resp);
+      .subscribe({
+        next: resp => {
+          this.responseSource.next(resp);
+        }, error: err => {
+          //do something
+          console.log(err.message);
+        }
       });
   }
 }
