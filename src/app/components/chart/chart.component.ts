@@ -48,13 +48,13 @@ export class ChartComponent implements OnInit {
     this.apiService.response.subscribe(
       res => {
         this.userData = res;
-        this.userData.forEach(item => {
-          if (item.dob.age >= 20 && item.dob.age < 29) this.barChartData.datasets[0].data[0]++
-          if (item.dob.age >= 30 && item.dob.age < 39) this.barChartData.datasets[0].data[1]++
-          if (item.dob.age >= 40 && item.dob.age < 49) this.barChartData.datasets[0].data[2]++
-          if (item.dob.age >= 50 && item.dob.age < 59) this.barChartData.datasets[0].data[3]++
-          if (item.dob.age >= 60 && item.dob.age < 69) this.barChartData.datasets[0].data[4]++
-          if (item.dob.age >= 70 && item.dob.age < 79) this.barChartData.datasets[0].data[5]++
+        this.userData.forEach((item: UserModel) => {
+          if (item.dob.age >= 20 && item.dob.age < 30) this.barChartData.datasets[0].data[0]++
+          if (item.dob.age >= 30 && item.dob.age < 40) this.barChartData.datasets[0].data[1]++
+          if (item.dob.age >= 40 && item.dob.age < 50) this.barChartData.datasets[0].data[2]++
+          if (item.dob.age >= 50 && item.dob.age < 60) this.barChartData.datasets[0].data[3]++
+          if (item.dob.age >= 60 && item.dob.age < 70) this.barChartData.datasets[0].data[4]++
+          if (item.dob.age >= 70 && item.dob.age < 80) this.barChartData.datasets[0].data[5]++
         })
         this.chart?.update();
         this.loaderService.hideLoader();
